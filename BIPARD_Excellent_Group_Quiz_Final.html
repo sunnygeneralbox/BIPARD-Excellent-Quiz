@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BIPARD – Excellent Group Quiz</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6fb;margin:0;padding:20px;color:#222}.box{max-width:700px;margin:auto;background:#fff;border-radius:18px;padding:24px;box-shadow:0 4px 20px #0002}h1{text-align:center;color:#243b7a}.sub{text-align:center;color:#666}input[type=text]{width:100%;box-sizing:border-box;padding:13px;margin:8px 0 16px;border:1px solid #ccc;border-radius:10px;font-size:16px}button{background:#243b7a;color:#fff;border:0;border-radius:10px;padding:13px 22px;font-size:16px;cursor:pointer}.q{margin:24px 0;padding:18px;background:#f8f9fc;border-radius:14px}label{display:block;padding:11px;margin:7px 0;background:#fff;border:1px solid #ddd;border-radius:9px;cursor:pointer}.score{text-align:center;font-size:24px;font-weight:bold}#quiz,#result{display:none}
+</style></head><body><div class="box">
+<div id="start"><h1>🏆 BIPARD – EXCELLENT GROUP</h1><p class="sub">Class Characters Quiz 😄</p>
+<input type="text" id="name" placeholder="अपना नाम लिखें"><input type="text" id="group" placeholder="अपना ग्रुप नेम लिखें">
+<button onclick="startQuiz()">Quiz शुरू करें 🚀</button></div>
+<div id="quiz"><h1>😎 कौन है ये?</h1><div id="questions"></div><button onclick="submitQuiz()">Submit Quiz ✅</button></div>
+<div id="result"><h1>🎉 Quiz Result</h1><p id="welcome" style="text-align:center"></p><p class="score" id="score"></p><p style="text-align:center">Excellent Group की तरफ से सलाम! 😄</p><button onclick="location.reload()">फिर से खेलें 🔄</button></div>
+</div>
+<script>
+const qs=[
+["जिम लवर, “Handsome Hunk” और CR—इन तीनों पहचान से कौन जाने जाते हैं? 😎💪",["निलेश सर","सर्वेश सर","गणेश सर","वैभव सर"],0],
+["क्लास की आगे वाली सीट पर बैठकर... नहीं, सोकर भी, अपनी गायकी से पूरा माहौल बदल देने वाली कौन हैं? 🎤😴",["रानी मैडम","नेहा मैम","संध्या मैम","प्रियांका मैम"],0],
+["अजय देवगन की First Copy और हमारे ग्रुप के “सिंघम” कौन हैं? 😎🕶️",["सर्वेश सर","मुकेश सर","भास्कर सर","रोहित सर"],0],
+["अगर Polity की किताब पूछे—“मुझे किसने लिखा?”, तो शायद जवाब आएगा… 📚😂",["लक्ष्मीकांत","अमित बाजपई","श्वेतांश","संतोष"],0],
+["दिखने में जिनको देखकर बाबा साहेब भीमराव अंबेडकर की याद आ जाए, वो कौन हैं? 👓",["मुकेश सर","सर्वेश सर","गणेश","रोहित सर"],0],
+["क्लास का कौन सा सदस्य है जिसकी दूसरी शादी कराने में पूरी क्लास एकजुट है? 😂💍",["गणेश","निलेश","संतोष","भास्कर"],0],
+["इनके आगे तो PTI भी हार मानकर प्रणाम कर लेती है। 🫡😂 ये कौन हैं?",["संतोष सर","वैभव सर","सर्वेश सर","श्वेतांश"],0],
+["जैसे ही ये क्लास में आते हैं, लाइटें अपने-आप OFF होने लगती हैं। 💡➡️🌚 लाइट और इनका रिश्ता कुछ ज़्यादा ही गहरा है। ये कौन हैं?",["वैभव सर","गणेश","निलेश","मुकेश सर"],0],
+["जहाँ भी LEO की चर्चा होती है, वहाँ इनका नाम अपने-आप सामने आ जाता है। 🦁",["हर्षित गांधी मैम","रानी मैडम","नेहा मैम","संध्या मैम"],0],
+["मज़ाक-मज़ाक में ऐसी बातें कह देते हैं कि Course Coordinator भी नहीं बचते। 😂🔥 ये कौन हैं?",["भास्कर सर","अमित बाजपई","रोहित सर","श्वेतांश"],0]
+];
+function startQuiz(){if(!document.getElementById("name").value.trim()||!document.getElementById("group").value.trim()){alert("पहले अपना नाम और ग्रुप नेम भरिए 😊");return}document.getElementById("start").style.display="none";document.getElementById("quiz").style.display="block";let out="";qs.forEach((q,i)=>{out+=`<div class="q"><b>Q${i+1}. ${q[0]}</b>`;q[1].forEach((o,j)=>out+=`<label><input type="radio" name="q${i}" value="${j}"> ${o}</label>`);out+="</div>"});document.getElementById("questions").innerHTML=out}
+function submitQuiz(){let score=0;qs.forEach((q,i)=>{let a=document.querySelector(`input[name=q${i}]:checked`);if(a&&+a.value===q[2])score++});document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("welcome").textContent=document.getElementById("name").value+" | "+document.getElementById("group").value;document.getElementById("score").textContent="आपका स्कोर: "+score+" / 10"}
+</script></body></html>
